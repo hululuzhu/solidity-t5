@@ -1,4 +1,4 @@
-# Solidity Large Lauguage Model for Code Generation
+# A Code-T5 based Solidity Lauguage Model for Smart Contract Code Generation
 
 ## Published model at HuggingFace
 - See https://huggingface.co/hululuzhu/solidity-t5
