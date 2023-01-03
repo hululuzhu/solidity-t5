@@ -93,3 +93,17 @@
 - The model is significantly under-trained because of lack of GPU budget, need 10x colab resources (~$100 for full train)
 - This is quite limited on how the model is used, potentially we could switch to GPT2 decoder-only to compare, but CodeT5 has its strong code optimization
 - Need more classifiers (T5 or BERT alike) to detect potential defects.
+  - This is the intention of the project, however I found it quite challenging to find the labeled data that points the exact line of code that has defect
+  - Technically, 
+
+## Some thoughts (01/2023)
+- As I tested a few examples using this significantly-under-trained model and compared with chatGPT, it seems they perform similarly for code completion. That shows the great potential for this model to surpass chatGPT if we have 30x training budget (and reliable training pipeline)
+  - 30x budget? I trained 3 hours which only finished 10% of 1 epoch, I expect 3 epoches are reasonable size for finetune based on my personal experience
+- The data is specially tuned for codeT5, thus it has the limitation of
+  - Split to input and output
+  - In/Out token size limit is 512
+- Ideally we could change the transformed data, so it could be trained in BERT style to compare with T5-based classifiers, or fill-missing-splan style to add context before and after to let model output middle code
+- Training more classifiers (T5 or BERT alike) to detect potential defects is the intention of the project, however I found it quite challenging to find the labeled data that points the exact line of code that has defect
+  - The part I divide code into segment and their ancestor info could be useful, but need more time to evaluate
+  - Technically, 
+- It is also hard to tell if my aggressive approach to remove all comments (thus rely on meaning of code only) is a good approach
